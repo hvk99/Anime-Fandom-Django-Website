@@ -1,0 +1,21 @@
+{% extends 'main/header.html' %}
+
+{% block content %}
+  <div class="row">
+    {% for character in characters %}
+        <div class="col s12 m6">
+            <div class="card blue-grey darken-1 hoverable">
+				<div class="card-content white-text">
+					<span class="card-title">{{character.name}}</span>
+					<p><strong>Skills :</strong> {{character.skill}}</p>
+					<p><strong>Power :</strong> {{character.power}}</p>
+					<p><strong>Description :</strong> {{character.description|safe}}</p>
+				</div>
+				<div class="card-action">
+					<a href="#">View</a>
+					<a href="#">Battle</a>
+				</div>
+            </div>
+        </div>
+    {% endfor %}
+{% endblock %}

@@ -1,0 +1,41 @@
+{% extends 'main/header.html' %}
+
+{% block content %}
+
+	<div class="row">
+		<div class="col s12 m8 l8">
+			<h3>{{character.name}}</h3>
+			<p><strong>Skills : </strong>{{character.skill}}</p>
+			<p><strong>Power Level : </strong>{{character.power}}</p>
+			<p><strong>About : </strong>{{character.description|safe}}</p>
+		</div>
+
+
+		<div class="col s12 m4 l4">
+			<ul class="collapsible popout">
+				{% for character in sidebar %}
+					{% if forloop.counter0 == this_character_idx %}
+						<li class="active">
+							<div class="collapsible-header">
+								{{character.name}}
+								<br>
+								(currently viewing)
+							</div>
+						</li>
+					{% else %}
+						<li>
+							<div class="collapsible-header">{{character.name}}</div>
+							<div class="collapsible-body">
+								<p><a href="/{{character.slug}}">
+									<button class="btn waves-effect waves-light right-align">Go</button>
+								</a></p>
+							</div>
+						</li>
+					{% endif %}
+				{% endfor %}
+			</ul>
+		</div>
+	</div>
+
+
+{% endblock %}
